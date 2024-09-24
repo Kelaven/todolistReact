@@ -20,12 +20,50 @@ function App() {
     setTodoList(todoList.filter((todo) => todo._id !== id));
   }
 
+  function toggleTodo(id) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo._id === id
+          ? {
+              ...todo,
+              done: !todo.done,
+            }
+          : todo
+      )
+    );
+  }
+  function toggleTodoEdit(id) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo._id === id
+          ? {
+              ...todo,
+              edit: !todo.edit,
+            }
+          : todo
+      )
+    );
+  }
+  function editTodo(id, content) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo._id === id ? { ...todo, edit: false, content } : todo
+      )
+    );
+  }
+
   return (
     <div className="p-20">
       <div className="card">
         <h1 className="mb-20">To do list</h1>
         <AddTodo addTodo={addTodo} />
-        <TodoList todoList={todoList} deleteTodo={deleteTodo} />
+        <TodoList
+          todoList={todoList}
+          deleteTodo={deleteTodo}
+          toggleTodo={toggleTodo}
+          toggleTodoEdit={toggleTodoEdit}
+          editTodo={editTodo}
+        />
       </div>
     </div>
   );
