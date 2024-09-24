@@ -12,6 +12,7 @@ function App() {
       content,
       done: false,
       edit: false,
+      selected: false,
     };
     setTodoList([...todoList, todo]); // récupérer toutes les anciennes todo avec le spread operator + celle que l'on vient de créer
   }
@@ -51,6 +52,21 @@ function App() {
       )
     );
   }
+  function selectTodo(id) {
+    setTodoList(
+      todoList.map((todo) =>
+        todo._id === id
+          ? {
+              ...todo,
+              selected: true,
+            }
+          : {
+              ...todo,
+              selected: false,
+            }
+      )
+    );
+  }
 
   return (
     <div className="p-20">
@@ -63,6 +79,7 @@ function App() {
           toggleTodo={toggleTodo}
           toggleTodoEdit={toggleTodoEdit}
           editTodo={editTodo}
+          selectTodo={selectTodo}
         />
       </div>
     </div>

@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.selected {
+  border: 2px solid lightblue;
+  border-radius: 4px;
+}
+
+li {
+  cursor: pointer;
+}
