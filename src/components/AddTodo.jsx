@@ -23,7 +23,7 @@ function AddTodo({ addTodo }) {
   }
 
   return (
-    <div>
+    <div className="mb-10">
       <input
         type="text"
         placeholder="Ajouter une todo"

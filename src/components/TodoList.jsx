@@ -1,7 +1,16 @@
 import React from "react";
+import TodoItem from "./TodoItem";
 
-function TodoList() {
-  return <h2>TodoList</h2>;
+function TodoList({ todoList, deleteTodo }) {
+  return todoList.length ? (
+    <ul>
+      {todoList.map((todo) => (
+        <TodoItem todo={todo} deleteTodo={deleteTodo} key={todo._id} />
+      ))}
+    </ul>
+  ) : (
+    <p>Aucune todo pour le moment</p>
+  );
 }
 
 export default TodoList;

@@ -8,7 +8,7 @@ function App() {
 
   function addTodo(content) {
     const todo = {
-      id: crypto.randomUUID,
+      _id: crypto.randomUUID(),
       content,
       done: false,
       edit: false,
@@ -16,12 +16,16 @@ function App() {
     setTodoList([...todoList, todo]); // récupérer toutes les anciennes todo avec le spread operator + celle que l'on vient de créer
   }
 
+  function deleteTodo(id) {
+    setTodoList(todoList.filter((todo) => todo._id !== id));
+  }
+
   return (
     <div className="p-20">
       <div className="card">
         <h1 className="mb-20">To do list</h1>
         <AddTodo addTodo={addTodo} />
-        <TodoList />
+        <TodoList todoList={todoList} deleteTodo={deleteTodo} />
       </div>
     </div>
   );
