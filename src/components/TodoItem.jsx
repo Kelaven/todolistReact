@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 function TodoItem({ todo, deleteTodo, toggleTodo, editTodo, selectTodo }) {
   return (
@@ -10,33 +11,30 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo, selectTodo }) {
         {todo.content}
         {todo.done && " ✓"}
       </span>
-      <button
+      <Button
+        text="valider"
         onClick={(e) => {
           e.stopPropagation();
           toggleTodo();
         }}
         className="me-2"
-      >
-        Valider
-      </button>
-      <button
+      ></Button>
+      <Button
+        text="Modifier"
         onClick={(e) => {
           e.stopPropagation();
           editTodo();
         }}
         className="me-2"
-      >
-        Modifier
-      </button>
-      <button
+      ></Button>
+      <Button
+        text="Supprimer"
         onClick={(e) => {
           e.stopPropagation();
           deleteTodo(todo._id);
         }}
         className="me-2"
-      >
-        Supprimer
-      </button>
+      ></Button>
     </li>
   );
 }

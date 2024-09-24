@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 function AddTodo({ addTodo }) {
   const [value, setValue] = useState("");
@@ -32,7 +33,7 @@ function AddTodo({ addTodo }) {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <button onClick={handleClick}>Ajouter</button>
+      <Button text="Ajouter" onClick={handleClick} />
     </div>
   );
 }

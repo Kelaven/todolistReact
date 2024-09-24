@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import Button from "./Button";
 
 function EditTodo({ todo, editTodo, cancelEditTodo }) {
   const [value, setValue] = useState(todo.content);
@@ -33,10 +34,8 @@ function EditTodo({ todo, editTodo, cancelEditTodo }) {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <button className="me-1" onClick={cancelEditTodo}>
-        Annuler
-      </button>
-      <button onClick={handleClick}>Sauvegarder</button>
+      <Button text="Annuler" onClick={cancelEditTodo}></Button>
+      <Button text="Sauvegarder" onClick={handleClick}></Button>
     </div>
   );
 }
