@@ -49,3 +49,10 @@
 li {
   cursor: pointer;
 }
+
+.btn-primary {
+  background-color: #ffa500;
+}
+.btn-secondary {
+  background-color: #ff4500;
+}

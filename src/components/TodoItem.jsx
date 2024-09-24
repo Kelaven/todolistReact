@@ -17,7 +17,6 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo, selectTodo }) {
           e.stopPropagation();
           toggleTodo();
         }}
-        className="me-2"
       ></Button>
       <Button
         text="Modifier"
@@ -25,7 +24,6 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo, selectTodo }) {
           e.stopPropagation();
           editTodo();
         }}
-        className="me-2"
       ></Button>
       <Button
         text="Supprimer"
@@ -33,7 +31,6 @@ function TodoItem({ todo, deleteTodo, toggleTodo, editTodo, selectTodo }) {
           e.stopPropagation();
           deleteTodo(todo._id);
         }}
-        className="me-2"
       ></Button>
     </li>
   );
