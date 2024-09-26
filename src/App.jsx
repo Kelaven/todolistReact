@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
@@ -7,6 +7,31 @@ import themeContext from "./context/theme";
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [theme, setTheme] = useState("primary");
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    async function fetchTodoList(params) {
+      try {
+        const response = await fetch("https://restapi.fr/api/rtodo");
+        if (response.ok) {
+          const todos = await response.json();
+          if (Array.isArray(todos)) {
+            // si on récupère plusieurs todos (ça sera un tableau)
+            setTodoList(todos);
+          } else {
+            // si on récupère une seule todo
+            setTodoList([todos]);
+          }
+        } else {
+          console.log("Oups, erreur");
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTodoList();
+  }, []);
 
   // function addTodo(content) {
   //   const todo = {
@@ -87,14 +112,18 @@ function App() {
             <option value="secondary">Thème 2</option>
           </select>
           <AddTodo addTodo={addTodo} />
-          <TodoList
-            todoList={todoList}
-            deleteTodo={deleteTodo}
-            toggleTodo={toggleTodo}
-            toggleTodoEdit={toggleTodoEdit}
-            editTodo={editTodo}
-            selectTodo={selectTodo}
-          />
+          {loading ? (
+            <p>Chargement en cours...</p>
+          ) : (
+            <TodoList
+              todoList={todoList}
+              deleteTodo={deleteTodo}
+              toggleTodo={toggleTodo}
+              toggleTodoEdit={toggleTodoEdit}
+              editTodo={editTodo}
+              selectTodo={selectTodo}
+            />
+          )}
         </div>
       </div>
     </themeContext.Provider>
