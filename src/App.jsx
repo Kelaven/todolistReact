@@ -57,7 +57,9 @@ function App() {
   }
 
   function updateTodo(updatedTodo) {
-    setTodoList(todoList.map((t) => (t._id === updatedTodo._id ? newTodo : t))); // méthode générique pour récupérer la nouvelle todo en paramètre et se charger de remplacer l'ancienne par la nouvelle
+    setTodoList(
+      todoList.map((t) => (t._id === updatedTodo._id ? updatedTodo : t))
+    ); // méthode générique pour récupérer la nouvelle todo en paramètre et se charger de remplacer l'ancienne par la nouvelle
   }
   // function toggleTodo(id) {
   //   setTodoList(
