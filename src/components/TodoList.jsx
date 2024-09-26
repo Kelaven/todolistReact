@@ -5,10 +5,11 @@ import EditTodo from "./EditTodo";
 function TodoList({
   todoList,
   deleteTodo,
-  toggleTodo,
-  toggleTodoEdit,
-  editTodo,
-  selectTodo,
+  updateTodo,
+  // toggleTodo,
+  // toggleTodoEdit,
+  // editTodo,
+  // selectTodo,
 }) {
   return todoList.length ? (
     <ul>
@@ -17,17 +18,19 @@ function TodoList({
           <EditTodo
             key={todo._id}
             todo={todo}
-            cancelEditTodo={() => toggleTodoEdit(todo._id)}
-            editTodo={(content) => editTodo(todo._id, content)}
+            updateTodo={updateTodo}
+            // cancelEditTodo={() => toggleTodoEdit(todo._id)}
+            // editTodo={(content) => editTodo(todo._id, content)}
           />
         ) : (
           <TodoItem
+            key={todo._id}
             todo={todo}
             deleteTodo={deleteTodo}
-            toggleTodo={() => toggleTodo(todo._id)}
-            editTodo={() => toggleTodoEdit(todo._id)}
-            key={todo._id}
-            selectTodo={() => selectTodo(todo._id)}
+            updateTodo={updateTodo}
+            // toggleTodo={() => toggleTodo(todo._id)}
+            // editTodo={() => toggleTodoEdit(todo._id)}
+            // selectTodo={() => selectTodo(todo._id)}
           />
         )
       )}
