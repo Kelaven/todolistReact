@@ -8,15 +8,19 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [theme, setTheme] = useState("primary");
 
-  function addTodo(content) {
-    const todo = {
-      _id: crypto.randomUUID(),
-      content,
-      done: false,
-      edit: false,
-      selected: false,
-    };
-    setTodoList([...todoList, todo]); // récupérer toutes les anciennes todo avec le spread operator + celle que l'on vient de créer
+  // function addTodo(content) {
+  //   const todo = {
+  //     _id: crypto.randomUUID(),
+  //     content,
+  //     done: false,
+  //     edit: false,
+  //     selected: false,
+  //   };
+  //   setTodoList([...todoList, todo]); // récupérer toutes les anciennes todo avec le spread operator + celle que l'on vient de créer
+  // }
+
+  function addTodo(todo) {
+    setTodoList([...todoList, todo]);
   }
 
   function deleteTodo(id) {
